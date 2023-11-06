@@ -1,5 +1,13 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: tan;
+}
 .frame {
-    height: 500px;
+    height: 550px;
     width: 400px;
     border: 2px black solid;
     border-radius: 10px;
@@ -20,6 +28,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.row0 {
+    display: flex;
 }
 
 .row1 {
@@ -43,4 +55,8 @@ button {
     width: 80px;
     margin: 5px;
     border-radius: 10px;
+}
+
+.clear, .zero {
+    flex-grow:1;
 }
