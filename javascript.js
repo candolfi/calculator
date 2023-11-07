@@ -1,14 +1,19 @@
-let display = [];
+let displayNum = [];
+const display = document.querySelector('.display');
 
 let num1 = document.querySelectorAll('.number').forEach(item =>{
     item.addEventListener('click', event => {
-        display.push(Number(item.innerHTML));
+        displayNum.push(Number(item.innerHTML));
+        display.innerHTML = displayNum.join("");
     });
-    return display
+    return displayNum
 });
 
 
-const add = function(num1, num2){
+display.innerHTML = displayString;
+
+
+const add = (num1, num2) => {
     const sum = num1 + num2;
     return sum;
 }
