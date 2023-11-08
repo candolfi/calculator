@@ -1,17 +1,47 @@
 let displayNum = [];
-const display = document.querySelector('.display');
+let displayNum2 = [];
+let displayOperator = [];
 
-let num1 = document.querySelectorAll('.number').forEach(item =>{
-    item.addEventListener('click', event => {
-        displayNum.push(Number(item.innerHTML));
-        display.innerHTML = displayNum.join("");
-    });
+let display = document.querySelector('.display');
+let operator = document.querySelectorAll('.operator')
+let num = document.querySelectorAll('.number');
+
+getNum1(num);
+getOperator(operator);
+// getNum2(num);
+
+//////////////////////////////////////////////////////////////////////////
+
+function getOperator(item) {
+    item.forEach(item => {
+        item.addEventListener('click', event => {
+            display.innerHTML = item.innerHTML;
+            displayOperator = item.innerHTML;
+        });
+    })
+}
+
+function getNum1(item) {
+    
+        item.forEach(item => {
+            item.addEventListener('click', event => {
+                displayNum.push(Number(item.innerHTML));
+                display.innerHTML = displayNum.join("");
+            });
+        return displayNum
+        })
+    
+}
+
+function getNum2(item) {
+    item.forEach(item => {
+        item.addEventListener('click', event => {
+            displayNum.push(Number(item.innerHTML));
+            display.innerHTML = displayNum.join("");
+        });
     return displayNum
-});
-
-
-display.innerHTML = displayString;
-
+    })
+}
 
 const add = (num1, num2) => {
     const sum = num1 + num2;
