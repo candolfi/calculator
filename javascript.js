@@ -5,42 +5,53 @@ let displayOperator = [];
 let display = document.querySelector('.display');
 let operator = document.querySelectorAll('.operator')
 let num = document.querySelectorAll('.number');
+let equate = document.querySelector('.equal');
 
 getNum1(num);
+getNum2(num);
 getOperator(operator);
-// getNum2(num);
 
 //////////////////////////////////////////////////////////////////////////
+
+function operate(num1, num2, operand) {
+    if(operand = "+") {
+        display.innerHTML = add(num1, num2);
+        return;
+    }
+}
 
 function getOperator(item) {
     item.forEach(item => {
         item.addEventListener('click', event => {
             display.innerHTML = item.innerHTML;
-            displayOperator = item.innerHTML;
+            displayOperator = [item.innerHTML];
         });
     })
+    return displayOperator;
 }
 
 function getNum1(item) {
-    
         item.forEach(item => {
             item.addEventListener('click', event => {
-                displayNum.push(Number(item.innerHTML));
-                display.innerHTML = displayNum.join("");
+                if(displayOperator.length === 0){
+                    displayNum.push(Number(item.innerHTML));
+                    display.innerHTML = displayNum.join("");
+                }
             });
-        return displayNum
-        })
-    
+    })
+    return displayNum
 }
 
 function getNum2(item) {
     item.forEach(item => {
         item.addEventListener('click', event => {
-            displayNum.push(Number(item.innerHTML));
-            display.innerHTML = displayNum.join("");
+            if(displayOperator.length > 0){
+                displayNum2.push(Number(item.innerHTML));
+                display.innerHTML = displayNum2.join("");
+            }
         });
-    return displayNum
     })
+    return displayNum2
 }
 
 const add = (num1, num2) => {
