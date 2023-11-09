@@ -4,6 +4,8 @@ let stringNum = [];
 let stringNum2 = [];
 let displayOperator = [];
 let answer = [];
+let decimal1 = [];
+let decimal2 = [];
 
 const display = document.querySelector('.display1');
 const display2 = document.querySelector('.display2');
@@ -11,16 +13,21 @@ const operator = document.querySelectorAll('.operator')
 const num = document.querySelectorAll('.number');
 const equate = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
+const decimal = document.querySelector('.decimal');
 
 getNum1(num);
 getNum2(num);
 getOperator(operator);
-equate.addEventListener('click', event => operate(Number(stringNum),Number(stringNum2),displayOperator[0]));
+equate.addEventListener('click', event => calculate());
 clear.addEventListener('click', event => allClear());
-
-
+decimal.addEventListener('click', event => decimalPoint());
 
 //////////////////////////////////////////////////////////////////////////
+function calculate(){
+    if(arrayNum2.length !== 0){
+        operate(parseFloat(stringNum),parseFloat(stringNum2),displayOperator[0]);
+    }
+}
 
 function getOperator(item) {
     item.forEach(item => {
@@ -70,6 +77,27 @@ function getNum2(item) {
     return
 }
 
+function decimalPoint(){
+    if(displayOperator.length === 0 && decimal1.length === 0){
+        arrayNum.push(".");
+        stringNum = arrayNum.join("");
+        decimal1[0] = 1;
+        display.innerHTML = arrayNum.join("");
+    }
+    if(displayOperator.length > 0 && decimal2.length === 0){
+        arrayNum2.push(".");
+        stringNum2 = arrayNum2.join("");
+        decimal2[0] = 1;
+        display.innerHTML = arrayNum2.join("");
+    }
+    if(answer.length > 0){
+        allClear();
+        arrayNum.push(".");
+        stringNum = arrayNum.join("");
+        decimal1[0] = 1;
+        display.innerHTML = arrayNum.join("");
+    }
+}
 function allClear() {
     arrayNum = [];
     arrayNum2 = [];
@@ -77,6 +105,8 @@ function allClear() {
     answer = []
     stringNum = [];
     stringNum2 = [];
+    decimal1 = [];
+    decimal2 = [];
     display.innerHTML = '0';
     display2.innerHTML = "";
     return;
@@ -105,24 +135,19 @@ function divide(num1, num2){
 function operate(num1, num2, operator){
     if(operator == ' + '){ 
         stringNum = add(num1,num2);
-        answer.push(add(num1,num2));
-        display.innerHTML = add(num1,num2);
     }
     if(operator == ' - '){
         stringNum = subtract(num1,num2);
-        answer.push(subtract(num1,num2));
-        display.innerHTML = subtract(num1,num2);
     }
     if(operator == ' x '){
         stringNum = multiply(num1,num2);
-        answer.push(multiply(add(num1,num2)));
-        display.innerHTML = multiply(num1,num2);
     }
     if(operator == ' / '){
         stringNum = divide(num1,num2);
-        answer.push(divide(num1,num2));
-        display.innerHTML = divide(num1,num2);
     }
     arrayNum2 = [];
+    decimal2 = [];
+    answer.push(stringNum);
+    display.innerHTML = stringNum;
     return display2.innerHTML = ""
 }
