@@ -14,15 +14,29 @@ const num = document.querySelectorAll('.number');
 const equate = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
 const decimal = document.querySelector('.decimal');
+const del = document.querySelector('.delete');
 
 getNum1(num);
 getNum2(num);
 getOperator(operator);
 equate.addEventListener('click', event => calculate());
 clear.addEventListener('click', event => allClear());
-decimal.addEventListener('click', event => decimalPoint());
+decimal.addEventListener('click', event => inputDecimal());
+del.addEventListener('click', event => backspace());
 
 //////////////////////////////////////////////////////////////////////////
+function backspace(){
+    if(displayOperator.length === 0){
+        arrayNum.pop()
+        stringNum = arrayNum.join("");
+        display.innerHTML = stringNum;
+    }
+    else if(displayOperator.length > 0){
+        arrayNum2.pop();
+        stringNum2 = arrayNum2.join("");
+        display.innerHTML = stringNum2;
+    }
+}
 function calculate(){
     if(arrayNum2.length !== 0){
         operate(parseFloat(stringNum),parseFloat(stringNum2),displayOperator[0]);
@@ -77,7 +91,7 @@ function getNum2(item) {
     return
 }
 
-function decimalPoint(){
+function inputDecimal(){
     if(displayOperator.length === 0 && decimal1.length === 0){
         arrayNum.push(".");
         stringNum = arrayNum.join("");
