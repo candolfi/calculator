@@ -26,9 +26,11 @@ body {
     border-radius: 10px;
     background-color: white;
     display: flex;
-    justify-content: right;
-    align-items: center;
+    flex-direction:column;
+    justify-content: center;
+    align-items: end;
     padding-right: 20px;
+    padding-top: 4px
 }
 
 .row0 {

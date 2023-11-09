@@ -5,7 +5,8 @@ let stringNum2 = [];
 let displayOperator = [];
 let answer = [];
 
-const display = document.querySelector('.display');
+const display = document.querySelector('.display1');
+const display2 = document.querySelector('.display2');
 const operator = document.querySelectorAll('.operator')
 const num = document.querySelectorAll('.number');
 const equate = document.querySelector('.equal');
@@ -25,9 +26,9 @@ function getOperator(item) {
     item.forEach(item => {
         item.addEventListener('click', event => {
             if(arrayNum2.length !== 0){
-               display.innerHTML = operate(Number(stringNum),Number(stringNum2),displayOperator[0]);
+               display1.innerHTML = operate(Number(stringNum),Number(stringNum2),displayOperator[0]);
             }
-            // display.innerHTML = item.innerHTML;
+            display2.innerHTML = item.innerHTML;
             displayOperator = [item.innerHTML];
         });
     })
