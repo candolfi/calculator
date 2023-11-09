@@ -25,8 +25,11 @@ clear.addEventListener('click', event => allClear());
 function getOperator(item) {
     item.forEach(item => {
         item.addEventListener('click', event => {
+            if(answer.length > 0){
+                answer = [];
+            }
             if(arrayNum2.length !== 0){
-               display1.innerHTML = operate(Number(stringNum),Number(stringNum2),displayOperator[0]);
+               display.innerHTML = operate(Number(stringNum),Number(stringNum2),displayOperator[0]);
             }
             display2.innerHTML = item.innerHTML;
             displayOperator = [item.innerHTML];
@@ -40,6 +43,12 @@ function getNum1(item) {
             item.addEventListener('click', event => {
                 if(displayOperator.length === 0){
                     arrayNum.push(Number(item.innerHTML))
+                    stringNum = arrayNum.join("");
+                    display.innerHTML = arrayNum.join("");
+                }
+                if(answer.length > 0){
+                    allClear();
+                    arrayNum.push(Number(item.innerHTML));
                     stringNum = arrayNum.join("");
                     display.innerHTML = arrayNum.join("");
                 }
@@ -69,6 +78,7 @@ function allClear() {
     stringNum = [];
     stringNum2 = [];
     display.innerHTML = '0';
+    display2.innerHTML = "";
     return;
 }
 
@@ -95,22 +105,24 @@ function divide(num1, num2){
 function operate(num1, num2, operator){
     if(operator == ' + '){ 
         stringNum = add(num1,num2);
-        arrayNum2 = [];
-        return display.innerHTML = add(num1,num2);
+        answer.push(add(num1,num2));
+        display.innerHTML = add(num1,num2);
     }
     if(operator == ' - '){
         stringNum = subtract(num1,num2);
-        arrayNum2 = [];
-        return display.innerHTML = subtract(num1,num2);
+        answer.push(subtract(num1,num2));
+        display.innerHTML = subtract(num1,num2);
     }
     if(operator == ' x '){
         stringNum = multiply(num1,num2);
-        arrayNum2 = [];
-        return display.innerHTML = multiply(num1,num2);
+        answer.push(multiply(add(num1,num2)));
+        display.innerHTML = multiply(num1,num2);
     }
     if(operator == ' / '){
         stringNum = divide(num1,num2);
-        arrayNum2 = [];
-        return display.innerHTML = divide(num1,num2);
+        answer.push(divide(num1,num2));
+        display.innerHTML = divide(num1,num2);
     }
+    arrayNum2 = [];
+    return display2.innerHTML = ""
 }
