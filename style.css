@@ -44,23 +44,7 @@ body {
     padding: 4px;
 }
 
-.row0 {
-    display: flex;
-}
-
-.row1 {
-    display: flex;
-}
-
-.row2 {
-    display: flex;
-}
-
-.row3 { 
-    display: flex;
-}
-
-.row4 {
+.row0, .row1, .row2, .row3, .row4 {
     display: flex;
 }
 
@@ -73,4 +57,20 @@ button {
 
 .clear, .zero {
     flex-grow:1;
+}
+
+.number, .decimal {
+    background-color: lightblue;
+}
+
+.delete {
+    background-color: crimson;
+}
+
+.operator, .equal{
+    background-color: rgb(236, 170, 84);
+}
+
+.clear {
+    background-color: forestgreen;
 }
